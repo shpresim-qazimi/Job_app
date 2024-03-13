@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/sign/sign-up.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title></title>
+</head>
+<body>
+    <div class="nav">
+        <a href="/sign/sign-in.html">Sign In</a>
+        <a href="/sign/sign-up.html">Sign Up</a>
+        <a href="job-application.html">Apply</a>
+    </div>
+    <div class="form">
+    <div class="form_box form_job">
+        <h1 class="form_box-title">Job Application Form</h1>
+        <p>Please fill in the form to apply for a position with our company.</p>
+        <form action="sign-in.php">
+            <div class="form_input-group">
+                <div class="form_input-field">
+                    <span><i class="fa fa-user" aria-hidden="true"></i></span>
+                    <input type="text" placeholder="Full Name" name="fname" id="fname">
+                    </div>
+                    <div class="form_input-field">
+                        <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                        <input type="email" placeholder="Email" name="email" id="email">
+                    </div>
+                    <div class="form_input-field">
+                        <span><i class="fa fa-phone" aria-hidden="true"></i></span>
+                        <input type="tel" placeholder="Phone Number" name="phoneNumber" id="phoneNumber">
+                    </div>
+                    <div class="form_input-field">
+                        <select name="positions" id="positions">
+                            <option class="option_positions" value="position" selected disabled>Select Position</option>
+                            <option  class="option_positions" value="developer">Developer</option>
+                            <option  class="option_positions" value="desiner">Designer</option>
+                          </select>
+                    </div>
+                    <div class="form_input-field form_button">
+                        <input type="file" id="uploadBtn">
+                        <label for="uploadBtn" class="label-button"><span><i class="fa fa-upload"></i></span>Upload CV</label>
+                    </div>
+                    <div class="form_input-field">
+                        <label for="date" class="date_label">Earliest possible date:</label>
+                        <input type="date" id="date" name="date" class="input_date">
+                    </div>
+                    <div class="form_input-field">
+                        <textarea rows="10" cols="100" name="coverletter" placeholder="Please introduce yourself and explain why you are a good fit for the position."></textarea>
+                    </div>
+                    <div class="form_input-field">
+                        <input class="input-btn" type="submit" name="apply" id="apply" value="Apply Now">
+                    </div>
+            </div>
+        </form>
+    </div>
+    
+</div>
+</body>
+</html>
