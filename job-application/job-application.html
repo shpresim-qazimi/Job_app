@@ -3,59 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/sign/sign-up.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title></title>
 </head>
 <body>
     <div class="nav">
-        <a href="/sign/sign-in.html">Sign In</a>
-        <a href="/sign/sign-up.html">Sign Up</a>
+        <a href="sign-in.html">Sign In</a>
+        <a href="sign-up.html">Sign Up</a>
         <a href="job-application.html">Apply</a>
     </div>
     <div class="form">
     <div class="form_box form_job">
         <h1 class="form_box-title">Job Application Form</h1>
-        <p>Please fill in the form to apply for a position with our company.</p>
-        <form action="sign-in.php">
+        <p>Please take a moment to complete the form below to apply for a position with our company. We look forward to getting to know you better!</p>
+        <form id="myForm" method="POST">
             <div class="form_input-group">
                 <div class="form_input-field">
-                    <span><i class="fa fa-user" aria-hidden="true"></i></span>
-                    <input type="text" placeholder="Full Name" name="fname" id="fname">
+                    <span><i class="fa fa-user fa-fw" aria-hidden="true"></i></span>
+                    <input type="text" placeholder="Full Name" name="name" id="name" required>
                     </div>
                     <div class="form_input-field">
-                        <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
-                        <input type="email" placeholder="Email" name="email" id="email">
+                        <span><i class="fa fa-envelope fa-fw" aria-hidden="true"></i></span>
+                        <input type="email" placeholder="Email" name="email" id="email" required>
                     </div>
                     <div class="form_input-field">
-                        <span><i class="fa fa-phone" aria-hidden="true"></i></span>
-                        <input type="tel" placeholder="Phone Number" name="phoneNumber" id="phoneNumber">
+                        <span><i class="fa fa-phone fa-fw" aria-hidden="true"></i></span>
+                        <input type="tel" placeholder="Phone Number" name="phoneNumber" id="contact" required>
                     </div>
                     <div class="form_input-field">
-                        <select name="positions" id="positions">
+                        <select name="positions" id="positions" required>
                             <option class="option_positions" value="position" selected disabled>Select Position</option>
-                            <option  class="option_positions" value="developer">Developer</option>
-                            <option  class="option_positions" value="desiner">Designer</option>
+                            <option  class="option_positions" value="Software Engineer">Software Engineer</option>
+                            <option  class="option_positions" value="Database Administrator">Database Administrator</option>
+                            <option  class="option_positions" value="App Developer">App Developer</option>
+                            <option  class="option_positions" value="Web Developer">Web Developer</option>
+                            <option  class="option_positions" value="Cloud Engineer">Cloud Engineer</option>
                           </select>
                     </div>
-                    <div class="form_input-field form_button">
-                        <input type="file" id="uploadBtn">
+                    <div class="form_input-field">
+                        <input type="file" id="uploadBtn" required name="uploadBtn">
                         <label for="uploadBtn" class="label-button"><span><i class="fa fa-upload"></i></span>Upload CV</label>
                     </div>
                     <div class="form_input-field">
                         <label for="date" class="date_label">Earliest possible date:</label>
-                        <input type="date" id="date" name="date" class="input_date">
+                        <input type="date" id="date" name="date" class="input_date" required>
                     </div>
                     <div class="form_input-field">
-                        <textarea rows="10" cols="100" name="coverletter" placeholder="Please introduce yourself and explain why you are a good fit for the position."></textarea>
+                        <textarea id="message" rows="10" cols="100" name="coverletter" placeholder="Please introduce yourself and explain why you are a good fit for the position."></textarea>
                     </div>
                     <div class="form_input-field">
-                        <input class="input-btn" type="submit" name="apply" id="apply" value="Apply Now">
+                        <input type="submit" value="Send"  id="apply" onclick="SendEmail()" class="input-btn">
                     </div>
             </div>
         </form>
     </div>
-    
 </div>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+    document.getElementById("myForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let contact = document.getElementById("contact").value;
+        let positions = document.getElementById("positions").value;
+        let uploadBtn = document.getElementById("uploadBtn").value;
+        let date = document.getElementById("date").value;
+        let message = document.getElementById("message").value;
+
+        let body = "Name: " + name + "<br/> Email: " + email + "<br/> Contact Number: " + contact + "<br/> Position: " + positions + "<br/> Upload Cv: " + uploadBtn + "<br/> Date: " + date +"<br/> Messages: " + message;
+        console.log (body);
+
+        SendEmail(body);
+    });
+
+    function SendEmail(body) {
+        Email.send({
+            SecureToken :  "7a821d01-418e-4cd6-b9f2-89beb5cfe426",
+            To : 'shpresimqazimi5@gmail.com',
+            From : "shpresimqazimi5@gmail.com",
+            Subject : "Message From Academy",
+            Body : body
+        }).then(
+            message => alert(message)
+        );
+    };
+</script>
 </body>
 </html>
